@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
-    import ExploreContainer from '@/components/ExploreContainer.vue';
+    import TabPlaceholder from '@/components/TabPlaceholder.vue';
 </script>
 
 <template>
@@ -17,7 +17,7 @@
                 </ion-toolbar>
             </ion-header>
 
-            <explore-container name="Focus"/>
+            <tab-placeholder name="Focus"/>
         </ion-content>
     </ion-page>
 </template>

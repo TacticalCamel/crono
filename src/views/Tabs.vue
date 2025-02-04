@@ -9,22 +9,22 @@
             <ion-router-outlet/>
 
             <ion-tab-bar slot="bottom">
-                <ion-tab-button tab="tasks" href="/tabs/tasks">
+                <ion-tab-button tab="tasks" href="/tasks">
                     <ion-icon aria-hidden="true" :icon="checkmarkCircle"/>
                     <ion-label>Tasks</ion-label>
                 </ion-tab-button>
 
-                <ion-tab-button tab="focus" href="/tabs/focus">
+                <ion-tab-button tab="focus" href="/focus">
                     <ion-icon aria-hidden="true" :icon="barbell"/>
                     <ion-label>Focus</ion-label>
                 </ion-tab-button>
 
-                <ion-tab-button tab="stats" href="/tabs/stats">
+                <ion-tab-button tab="insights" href="/insights">
                     <ion-icon aria-hidden="true" :icon="statsChart"/>
                     <ion-label>Insights</ion-label>
                 </ion-tab-button>
 
-                <ion-tab-button tab="account" href="/tabs/account">
+                <ion-tab-button tab="account" href="/account">
                     <ion-icon aria-hidden="true" :icon="personCircle"/>
                     <ion-label>Account</ion-label>
                 </ion-tab-button>

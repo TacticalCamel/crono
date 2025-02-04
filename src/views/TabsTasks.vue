@@ -1,8 +1,10 @@
 <script setup lang="ts">
-    import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonList } from '@ionic/vue';
     import { useLocalstorageRef } from "@/composables/useLocalstorageRef";
+    import { IonPage, IonIcon, IonHeader, IonToolbar, IonTitle, IonContent, IonFab, IonFabButton, modalController } from '@ionic/vue';
+    import { add } from "ionicons/icons";
     import { Task } from "@/models/Task";
-    import TaskCard from "@/components/TaskCard.vue";
+    import TaskList from "@/components/TaskList.vue";
+    import TaskCreateModal from "@/components/TaskCreateModal.vue";
 
     const tasks = useLocalstorageRef<Task[]>('cr-test-tasks', createTasks(10));
 
@@ -22,6 +24,20 @@
 
         return result;
     }
+
+    async function openModal() {
+        const modal = await modalController.create({
+            component: TaskCreateModal
+        });
+
+        await modal.present();
+
+        const {data, role} = await modal.onWillDismiss();
+
+        if(role === 'confirm') {
+            tasks.value.push(data);
+        }
+    }
 </script>
 
 <template>
@@ -38,9 +54,13 @@
                 </ion-toolbar>
             </ion-header>
 
-            <ion-list>
-                <task-card v-for="task in tasks" :task/>
-            </ion-list>
+            <task-list :tasks="tasks"/>
+
+            <ion-fab slot="fixed" horizontal="end" vertical="bottom">
+                <ion-fab-button @click="openModal">
+                    <ion-icon :icon="add"/>
+                </ion-fab-button>
+            </ion-fab>
         </ion-content>
     </ion-page>
 </template>

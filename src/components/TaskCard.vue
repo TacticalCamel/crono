@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/vue'
+    import { IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonRow } from '@ionic/vue'
     import { Task } from "@/models/Task";
     import TaskCardPriority from "@/components/TaskCardPriority.vue";
 

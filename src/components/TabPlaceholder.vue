@@ -7,7 +7,7 @@
 <template>
     <div id="container">
         <strong>{{ name }}</strong>
-        <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+        <p>Feature in development</p>
     </div>
 </template>
 
@@ -31,9 +31,5 @@
         line-height: 22px;
         color: #8c8c8c;
         margin: 0;
-    }
-
-    #container a {
-        text-decoration: none;
     }
 </style>
