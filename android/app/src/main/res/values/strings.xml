@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">Crono</string>
     <string name="title_activity_main">Crono</string>
-    <string name="package_name">io.ionic.starter</string>
-    <string name="custom_url_scheme">io.ionic.starter</string>
+    <string name="package_name">com.tacticalcamel.crono</string>
+    <string name="custom_url_scheme">com.tacticalcamel.crono</string>
 </resources>
