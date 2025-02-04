@@ -1,7 +1,7 @@
 {
   "name": "crono",
+  "type": "vue-vite",
   "integrations": {
     "capacitor": {}
-  },
-  "type": "vue-vite"
+  }
 }
