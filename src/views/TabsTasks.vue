@@ -1,6 +1,27 @@
 <script setup lang="ts">
-    import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
-    import ExploreContainer from '@/components/ExploreContainer.vue';
+    import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonList } from '@ionic/vue';
+    import { useLocalstorageRef } from "@/composables/useLocalstorageRef";
+    import { Task } from "@/models/Task";
+    import TaskCard from "@/components/TaskCard.vue";
+
+    const tasks = useLocalstorageRef<Task[]>('cr-test-tasks', createTasks(10));
+
+    function createTasks(length: number): Task[] {
+        const result: Task[] = [];
+
+        for (let i = 0; i < length; i++) {
+            result.push({
+                id: crypto.randomUUID(),
+                title: 'Task ' + i,
+                description: 'Example description for task ' + i,
+                priority: i % 4,
+                status: i % 2,
+                deadline: Date.now()
+            });
+        }
+
+        return result;
+    }
 </script>
 
 <template>
@@ -17,7 +38,9 @@
                 </ion-toolbar>
             </ion-header>
 
-            <explore-container name="Tasks"/>
+            <ion-list>
+                <task-card v-for="task in tasks" :task/>
+            </ion-list>
         </ion-content>
     </ion-page>
 </template>
