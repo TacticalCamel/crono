@@ -1,15 +1,17 @@
 <script setup lang="ts">
     import { ref } from "vue";
-    import { IonContent, IonInput, IonDatetime, IonDatetimeButton, IonModal, IonButton, IonCard, IonToolbar, IonButtons, IonTitle, IonHeader, modalController } from "@ionic/vue";
+    import { IonButton, IonButtons, IonCard, IonContent, IonDatetime, IonDatetimeButton, IonHeader, IonInput, IonModal, IonTitle, IonToolbar, modalController } from "@ionic/vue";
     import { Task } from "@/models/Task";
+    import { TaskStatus } from "@/models/TaskStatus";
+    import { TaskPriority } from "@/models/TaskPriority";
     import TaskCardPriority from "@/components/TaskCardPriority.vue";
 
     const task = ref<Task>({
         id: crypto.randomUUID(),
         title: '',
         description: '',
-        priority: 0,
-        status: 0,
+        priority: TaskPriority.medium,
+        status: TaskStatus.toDo,
         deadline: Date.now()
     });
 
@@ -26,11 +28,11 @@
     <ion-header>
         <ion-toolbar>
             <ion-title slot="start">
-                Create a task
+                Create a new task
             </ion-title>
 
             <ion-buttons slot="end">
-                <ion-button color="danger" @click="cancel()" strong>Cancel</ion-button>
+                <ion-button color="danger" @click="cancel()">Cancel</ion-button>
             </ion-buttons>
         </ion-toolbar>
     </ion-header>

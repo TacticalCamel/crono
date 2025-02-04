@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonRow } from '@ionic/vue'
+    import { IonCard, IonCardHeader, IonCardSubtitle, IonCardContent, IonRow, IonLabel } from '@ionic/vue'
     import { Task } from "@/models/Task";
     import TaskCardPriority from "@/components/TaskCardPriority.vue";
 
@@ -9,14 +9,14 @@
 </script>
 
 <template>
-    <ion-card color="light">
+    <ion-card>
         <ion-card-header>
-            <ion-card-title>
+            <ion-card-subtitle>
                 <ion-row class="ion-justify-content-between ion-align-items-center">
-                    <span>{{ task.title }}</span>
+                    <ion-label>{{ task.title }}</ion-label>
                     <task-card-priority :priority="task.priority"/>
                 </ion-row>
-            </ion-card-title>
+            </ion-card-subtitle>
         </ion-card-header>
 
         <ion-card-content>

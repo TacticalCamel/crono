@@ -7,9 +7,3 @@
         <ion-router-outlet/>
     </ion-app>
 </template>
-
-<style>
-    :root {
-        --ion-safe-area-top: 18px;
-    }
-</style>

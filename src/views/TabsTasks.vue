@@ -54,7 +54,9 @@
                 </ion-toolbar>
             </ion-header>
 
-            <task-list :tasks="tasks"/>
+            <task-list
+                :tasks="tasks"
+            />
 
             <ion-fab slot="fixed" horizontal="end" vertical="bottom">
                 <ion-fab-button @click="openModal">
