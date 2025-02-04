@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
-    import { checkmarkCircle, barbell, statsChart, personCircle  } from 'ionicons/icons';
+    import { checkmarkCircle, flash, statsChart, personCircle } from 'ionicons/icons';
 </script>
 
 <template>
@@ -15,7 +15,7 @@
                 </ion-tab-button>
 
                 <ion-tab-button tab="focus" href="/focus">
-                    <ion-icon aria-hidden="true" :icon="barbell"/>
+                    <ion-icon aria-hidden="true" :icon="flash"/>
                     <ion-label>Focus</ion-label>
                 </ion-tab-button>
 
