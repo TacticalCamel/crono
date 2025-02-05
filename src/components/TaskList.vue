@@ -26,7 +26,7 @@
 
         <ion-label>
             <h1>No unfinished tasks</h1>
-            <p>Create a new one below</p>
+            <p>Create a task and it will show up here</p>
         </ion-label>
     </div>
 </template>
@@ -43,6 +43,6 @@
 
     .illustration {
         padding-left: 10px;
-        max-width: 280px;
+        max-width: 240px;
     }
 </style>
