@@ -6,9 +6,11 @@
     import { TaskPriority } from "@/models/TaskPriority";
     import TaskLabelPriority from "@/components/TaskLabelPriority.vue";
 
-    const {task} = defineProps<{
+    const props = defineProps<{
         task: Task
     }>();
+
+    const task = ref(props.task);
 
     /*
     * auto: id, status
@@ -20,14 +22,18 @@
 
     function confirm() {
         if (!hasDeadline.value) {
-            task.deadline = undefined;
+            task.value.deadline = undefined;
         }
 
-        modalController.dismiss(task, 'confirm');
+        modalController.dismiss(task.value, 'confirm');
     }
 
     function cancel() {
         modalController.dismiss(null, 'cancel');
+    }
+
+    function setPriority(priority: TaskPriority) {
+        task.value.priority = priority;
     }
 </script>
 
@@ -79,8 +85,8 @@
                 <task-label-priority
                     v-for="priority in [TaskPriority.low, TaskPriority.medium, TaskPriority.high, TaskPriority.urgent]"
                     :priority="priority"
-                    :outline="task.priority !== priority"
-                    @click="task.priority = priority"
+                    :class="{'priority-active': task.priority === priority}"
+                    @click="setPriority(priority)"
                 />
             </ion-item>
 
@@ -102,5 +108,10 @@
     .list {
         display: grid;
         gap: 1rem;
+    }
+
+    .priority-active {
+        outline: 2px solid var(--ion-color-base);
+        outline-offset: -2px;
     }
 </style>
