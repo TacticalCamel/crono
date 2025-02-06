@@ -7,5 +7,6 @@ export interface Task {
     description: string
     priority: TaskPriority
     status: TaskStatus
-    deadline: number
+    deadline: number | undefined
+    repeatable: boolean
 }

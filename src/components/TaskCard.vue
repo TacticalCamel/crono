@@ -1,7 +1,8 @@
 <script setup lang="ts">
-    import { IonCard, IonCardHeader, IonCardSubtitle, IonCardContent, IonRow, IonLabel } from '@ionic/vue'
+    import { IonCard, IonCardHeader, IonCardContent, IonText, IonCardTitle } from '@ionic/vue'
     import { Task } from "@/models/Task";
-    import TaskCardPriority from "@/components/TaskCardPriority.vue";
+    import TaskLabelPriority from "@/components/TaskLabelPriority.vue";
+    import TaskLabelDeadline from "@/components/TaskLabelDeadline.vue";
 
     const {task} = defineProps<{
         task: Task
@@ -11,12 +12,11 @@
 <template>
     <ion-card>
         <ion-card-header>
-            <ion-card-subtitle>
-                <ion-row class="ion-justify-content-between ion-align-items-center">
-                    <ion-label>{{ task.title }}</ion-label>
-                    <task-card-priority :priority="task.priority"/>
-                </ion-row>
-            </ion-card-subtitle>
+            <ion-card-title>
+                <ion-text>{{ task.title }}</ion-text>
+                <task-label-deadline v-if="task.deadline" :deadline="task.deadline"/>
+                <task-label-priority :priority="task.priority"/>
+            </ion-card-title>
         </ion-card-header>
 
         <ion-card-content>
@@ -24,3 +24,14 @@
         </ion-card-content>
     </ion-card>
 </template>
+
+<style scoped>
+    ion-card-title {
+        display: flex;
+        align-items: center;
+    }
+
+    ion-card-title ion-text {
+        margin-right: auto;
+    }
+</style>

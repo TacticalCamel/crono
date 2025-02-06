@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { computed } from "vue";
-    import { IonBadge } from "@ionic/vue";
+    import { IonChip } from "@ionic/vue";
     import { TaskPriority } from "@/models/TaskPriority";
 
     const {priority} = defineProps<{
@@ -35,7 +35,5 @@
 </script>
 
 <template>
-    <ion-badge :color="color">
-        {{ label }}
-    </ion-badge>
+    <ion-chip :color>{{ label }}</ion-chip>
 </template>
