@@ -1,37 +1,16 @@
 <script setup lang="ts">
     import { computed } from "vue";
     import { IonChip } from "@ionic/vue";
+    import { getPriorityColor, getPriorityLabel } from "@/functions/Priority";
     import { TaskPriority } from "@/models/TaskPriority";
 
     const {priority} = defineProps<{
         priority: TaskPriority
     }>();
 
-    const label = computed<string | undefined>(() => {
-        switch (priority) {
-            case TaskPriority.low:
-                return 'Low';
-            case TaskPriority.medium:
-                return 'Medium';
-            case TaskPriority.high:
-                return 'High';
-            case TaskPriority.urgent:
-                return 'Urgent';
-        }
-    });
+    const label = computed<string | undefined>(() => getPriorityLabel(priority));
 
-    const color = computed<string | undefined>(() => {
-        switch (priority) {
-            case TaskPriority.low:
-                return 'secondary';
-            case TaskPriority.medium:
-                return 'medium';
-            case TaskPriority.high:
-                return 'warning';
-            case TaskPriority.urgent:
-                return 'danger';
-        }
-    });
+    const color = computed<string | undefined>(() => getPriorityColor(priority));
 </script>
 
 <template>
