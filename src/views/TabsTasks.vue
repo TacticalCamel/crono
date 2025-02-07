@@ -48,10 +48,17 @@
             return;
         }
 
-        const index = tasks.value.findIndex(t => t.id === data.id);
+        const index = tasks.value.findIndex(t => t.id === task.id);
 
-        if (index >= 0) {
+        if(index < 0) {
+            return;
+        }
+
+        if (data) {
             tasks.value[index] = data;
+        }
+        else {
+            tasks.value.splice(index, 1);
         }
     }
 </script>

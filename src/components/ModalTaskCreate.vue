@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { computed, onMounted, reactive, ref, useTemplateRef } from "vue";
-    import { IonContent, IonInput, IonHeader, IonToolbar, IonButton, IonList, modalController, IonButtons, IonLabel, IonIcon, IonItemGroup, IonModal, IonItem, IonDatetimeButton, IonToggle } from "@ionic/vue";
+    import { IonContent, IonInput, IonHeader, IonToolbar, IonButton, IonList, modalController, IonButtons, IonLabel, IonIcon, IonItemGroup, IonModal, IonItem, IonDatetimeButton, IonToggle, IonActionSheet } from "@ionic/vue";
     import { millisecondsInHour } from "date-fns/constants";
     import { close } from "ionicons/icons";
     import { Task } from "@/models/Task";
@@ -52,6 +52,22 @@
     function cancel() {
         modalController.dismiss(null, 'cancel');
     }
+
+    function deleteTask() {
+        modalController.dismiss(null, 'confirm');
+    }
+
+    const deleteSheetButtons = [
+        {
+            text: 'Delete',
+            role: 'destructive',
+            handler: deleteTask
+        },
+        {
+            text: 'Cancel',
+            role: 'cancel',
+        }
+    ];
 </script>
 
 <template>
@@ -108,7 +124,7 @@
                     <ion-toggle v-model="hasDeadline" label-placement="start">Deadline</ion-toggle>
                 </ion-item>
 
-                <ion-item lines="none">
+                <ion-item lines="inset">
                     <ion-datetime-button datetime="datetime" :disabled="!hasDeadline"/>
 
                     <ion-modal :keep-contents-mounted="true">
@@ -116,6 +132,11 @@
                     </ion-modal>
                 </ion-item>
             </ion-item-group>
+
+            <ion-item v-if="!creating" lines="none">
+                <ion-button color="danger" id="delete-task">Delete task</ion-button>
+                <ion-action-sheet trigger="delete-task" header="Delete task?" :buttons="deleteSheetButtons"/>
+            </ion-item>
         </ion-list>
     </ion-content>
 </template>
